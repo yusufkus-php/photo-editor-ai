@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photo Editor AI</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Photo Editor AI</h1>
+      <p>Fotoğrafınızı yükleyin, filtreler ve düzenleme araçlarıyla anında düzenleyin.</p>
+    </header>
+
+    <main class="app-grid">
+      <section class="controls-panel">
+        <div class="card">
+          <h2>Fotoğraf</h2>
+          <label class="file-input">
+            <span>Görsel seç</span>
+            <input id="image-input" type="file" accept="image/*" />
+          </label>
+          <div class="button-row">
+            <button id="reset-image" disabled>Orijinale Dön</button>
+            <button id="undo" disabled>Geri Al</button>
+            <button id="download" disabled>İndir</button>
+          </div>
+          <div class="button-row">
+            <button data-rotate="-90" disabled class="rotate">↺ 90°</button>
+            <button data-rotate="90" disabled class="rotate">↻ 90°</button>
+            <button data-flip="horizontal" disabled class="flip">Yatay Çevir</button>
+            <button data-flip="vertical" disabled class="flip">Dikey Çevir</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Filtreler</h2>
+          <div class="slider-group">
+            <label for="brightness">Parlaklık <span data-value="brightness"></span></label>
+            <input type="range" id="brightness" min="0" max="200" value="100" />
+          </div>
+          <div class="slider-group">
+            <label for="contrast">Kontrast <span data-value="contrast"></span></label>
+            <input type="range" id="contrast" min="0" max="200" value="100" />
+          </div>
+          <div class="slider-group">
+            <label for="saturation">Doygunluk <span data-value="saturation"></span></label>
+            <input type="range" id="saturation" min="0" max="250" value="100" />
+          </div>
+          <div class="slider-group">
+            <label for="temperature">Sıcaklık <span data-value="temperature"></span></label>
+            <input type="range" id="temperature" min="-100" max="100" value="0" />
+          </div>
+          <div class="slider-group">
+            <label for="clarity">Keskinlik <span data-value="clarity"></span></label>
+            <input type="range" id="clarity" min="0" max="3" step="0.1" value="0" />
+          </div>
+          <div class="slider-group">
+            <label for="grayscale">Siyah-Beyaz <span data-value="grayscale"></span></label>
+            <input type="range" id="grayscale" min="0" max="100" value="0" />
+          </div>
+          <div class="slider-group">
+            <label for="sepia">Sepya <span data-value="sepia"></span></label>
+            <input type="range" id="sepia" min="0" max="100" value="0" />
+          </div>
+          <div class="slider-group">
+            <label for="hue">Renk Tonu <span data-value="hue"></span></label>
+            <input type="range" id="hue" min="-180" max="180" value="0" />
+          </div>
+          <div class="slider-group">
+            <label for="blur">Bulanıklık <span data-value="blur"></span></label>
+            <input type="range" id="blur" min="0" max="10" step="0.1" value="0" />
+          </div>
+          <div class="button-row">
+            <button id="auto-enhance" disabled>AI İyileştir</button>
+            <button id="reset-filters" disabled>Filtreleri Sıfırla</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Kırpma</h2>
+          <p>Tuval üzerinde bir alan seçip <strong>Kırp</strong> butonuna basın.</p>
+          <div class="button-row">
+            <button id="toggle-crop" disabled>Seçim Başlat</button>
+            <button id="apply-crop" disabled>Kırp</button>
+            <button id="cancel-crop" disabled>İptal</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="editor-panel">
+        <div class="canvas-wrapper">
+          <canvas id="editor-canvas"></canvas>
+          <div id="selection-box" hidden></div>
+        </div>
+        <div class="empty-state" id="empty-state">
+          <p>Başlamak için bir fotoğraf yükleyin.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>Photo Editor AI ile fotoğraflarınızı saniyeler içinde dönüştürün.</p>
+    </footer>
+
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
