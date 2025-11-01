@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Akıllı Fotoğraf Tamamlama</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app__header">
+        <h1>Fotoğraf Oran Dönüştürücü</h1>
+        <p>
+          Bir fotoğraf yükleyin, hedef oranı seçin ve <strong>Tamamla</strong> butonuna basarak görselinizi yeni oranına akıllı şekilde genişletin. Arka plan, seçilen oranı dolduracak şekilde bulanıklaştırılarak yapay zeka etkisiyle tamamlanır.
+        </p>
+      </header>
+
+      <section class="panel panel--upload">
+        <div class="upload">
+          <label for="imageInput" class="upload__label">
+            <span class="upload__cta">Fotoğraf Yükle</span>
+            <input id="imageInput" type="file" accept="image/*" hidden />
+          </label>
+          <div class="upload__preview" id="imagePreview">
+            <span class="upload__placeholder">Henüz fotoğraf seçilmedi.</span>
+          </div>
+        </div>
+
+        <div class="ratios" id="ratioButtons"></div>
+
+        <button class="button button--primary" id="completeButton" disabled>
+          Tamamla
+        </button>
+        <p class="hint">
+          İşlem tarayıcınızda yapılır. Daha ileri seviye outpainting için sunucunuza bir yapay zeka servis entegrasyonu ekleyebilirsiniz.
+        </p>
+      </section>
+
+      <section class="panel panel--result">
+        <h2>Sonuç</h2>
+        <div class="result" id="result">
+          <div class="result__placeholder">
+            Yeni görsel burada görünecek.
+          </div>
+        </div>
+        <div class="result__actions" id="resultActions"></div>
+        <div class="status" id="status"></div>
+      </section>
+    </main>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
